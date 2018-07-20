@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.stang.example.dao.test.WechatDao" >
+
+    <resultMap id="WechatMap" type="com.stang.example.entity.test.WechatEntity" >
+        <result column="id" property="id" jdbcType="VARCHAR" />
+        <result column="title" property="title" jdbcType="VARCHAR" />
+        <result column="author" property="author" jdbcType="VARCHAR" />
+        <result column="pubtime" property="pubtime" jdbcType="VARCHAR" />
+    </resultMap>
+
+
+    <!--public String id;-->
+    <!--public String title;-->
+    <!--public String author;-->
+    <!--public String pubtime;-->
+
+
+    <sql id="wechat" >
+        id,title,author,pubtime
+    </sql>
+
+    <select id="getWechatInfo" resultMap="WechatMap">
+        select
+        <include refid="wechat" />
+        from stang_big_wechat
+        where id = #{id}
+    </select>
+
+
+
+
+</mapper>

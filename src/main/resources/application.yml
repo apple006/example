@@ -1,0 +1,51 @@
+#项目根路径
+server:
+  context:
+    path: /example
+  servlet:
+    path: /example
+  #项目web 端口
+  port: 8080
+
+
+
+spring:
+    #项目数据源
+    datasource:
+        #数据源名称
+        name: suidaobig
+        #反射时 jdbc的class
+        driver-class-name: com.mysql.jdbc.Driver
+        #mysql 链接url
+        url: jdbc:mysql://192.168.1.252:3306/suidaobig
+        username: root
+        password: 123asd123asd
+        #数据源指定的jar
+        type: com.alibaba.druid.pool.DruidDataSource
+
+        #连接时的配置
+        filters: stat
+        maxActive: 20
+        initialSize: 1
+        maxWait: 60000
+        minIdle: 1
+        timeBetweenEvictionRunsMillis: 60000
+        minEvictableIdleTimeMillis: 300000
+        validationQuery: select 'x'
+        testWhileIdle: true
+        testOnBorrow: false
+        testOnReturn: false
+        poolPreparedStatements: true
+        maxOpenPreparedStatements: 20
+
+ #mybatis 配置
+mybatis:
+   #mapper的路径 *代表所有 mapper下面的所有的包 下面的所有的.xml文件
+  mapper-locations: classpath:mapper/*/*.xml
+  # mapper 对应映射实体类的路径
+  type-aliases-package: com.stang.example.entity
+
+ # html路径的前缀
+spring.thymeleaf.prefix: classpath:/templates/
+ # html路径的后缀
+spring.thymeleaf.suffix: .html
